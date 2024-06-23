@@ -15,7 +15,7 @@ app.use(express.json());
 const allowedOrigins = [
     'http://localhost:3000', // Local development
     'https://bookstore-k1xf01kwc-rohit-kumars-projects-ed18013e.vercel.app', // Vercel deployment
-    'https://bookstore-one-tau.vercel.app/' // vercel domain
+    'https://bookstore-one-tau.vercel.app' // vercel domain
   ];
   
   app.use(cors({
