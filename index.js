@@ -12,10 +12,21 @@ const Admin = require('./models/Admin');
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
- }));
+const allowedOrigins = [
+    'http://localhost:3000', // Local development
+    'https://bookstore-m4ndu4jqq-rohit-kumars-projects-ed18013e.vercel.app' // Vercel deployment
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true // If you need to include cookies in the request
+  }));
  
 app.use(cookieParser());
 dotenv.config();
